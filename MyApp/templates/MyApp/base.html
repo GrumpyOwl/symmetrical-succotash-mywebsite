@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load pipeline %}
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>martaswiatkowska</title>
+     {% stylesheet 'bootstrap' %}
+    <!--<link href='http://fonts.googleapis.com/css?family=Catamaran&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
+    <link href="{% static 'font/Blogger Sans/Web/Blogger Sans/BloggerSans.ttf' %}" rel="stylesheet" media="screen">
+    <link rel="icon" type="image/png" href="http://example.com/image.png" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Style.css' %}">
+</head>
+
+<body>
+    {% javascript 'bootstrap' %}
+    <div>
+        <!--<div class="header">-->
+            <!--<header>-->
+                <!--<div class="top-nav ">-->
+                    <!--<nav class="container ">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-4 navbar-left ">-->
+                                <!--<h3 class="lead"> Nazwa Strony-->
+                                <!--</h3>-->
+                            <!--</div>-->
+
+                            <!--<div class="col-md-8 navbar-right ">-->
+                                <!--<ul class="list-inline">-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</nav>-->
+                <!--</div>-->
+
+                <!--<div class="bottom-nav ">-->
+                    <!--<nav class="container ">-->
+                        <!--<div class="row menu">-->
+                            <!--<nav class="navbar ">-->
+                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}" /><span>Python</span></button></div>-->
+                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}"/><span>C#</span></button></div>-->
+                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}"/><span>.Net</span></button></div>-->
+                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}"/><span>VBA</span></button></div>-->
+                            <!--</nav>-->
+                        <!--</div>-->
+                    <!--</nav>-->
+                <!--</div>-->
+            <!--</header>-->
+        <!--</div>-->
+        <div class="content container main-content">
+            {% block content %}
+            <!--coś pomiędzy tymi blokami to wartość defoult-->
+                <!--{% for post in posts %}-->
+                    <!--<div class="post">-->
+                        <!--<div class="date">-->
+                            <!--{{ post.published_date }}-->
+                        <!--</div>-->
+                        <!--<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>-->
+                        <!--<p>{{ post.text|linebreaks }}</p>-->
+                    <!--</div>-->
+                <!--{% endfor %}-->
+            {% endblock %}
+        </div>
+        <div class="container" >
+            <footer>
+
+            </footer>
+        </div>
+    </div>
+
+</body>
+</html>

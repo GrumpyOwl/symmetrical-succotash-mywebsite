@@ -1,0 +1,28 @@
+{% extends 'MyApp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% for post in posts %}
+
+        <div class="post col-md-6"  >
+
+            <div class="date">
+                <h6>{{ post.published_date }}</h6>
+            </div>
+            <div>
+            {% if post.tutorial == "Python" %}
+                <img src="{% static 'images/diamond.png' %}" style="height: 75px;">
+            {% endif %}
+                <!--<div class="post-header">-->
+                    <!--<h1 class="">-->
+                        <!--<a href="{% url 'post_detail' pk=post.pk %}">{{ post.tutorial }}</a>-->
+                    <!--</h1>-->
+                <!--</div>-->
+
+                <div class="post-header">
+                <h4>{{ post.title | linebreaks }}</h4>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
