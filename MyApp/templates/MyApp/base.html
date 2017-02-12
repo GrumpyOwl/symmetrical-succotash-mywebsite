@@ -13,55 +13,116 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Style.css' %}">
+    <script type="text/javascript" src="{% static 'djng/js/django-angular.js' %}"></script>
+    <script type="text/javascript" src="{% static 'djng/js/django-angular-min.js' %}"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
 </head>
 
-<body>
+<body ng-model="MainModule">
+<script type="application/javascript">
+     var allStates = [
+        {
+          'name'      : 'Angular 1',
+          'url'       : 'https://github.com/angular/angular.js',
+          'watchers'  : '3,623',
+          'forks'     : '16,175',
+        },
+        {
+          'name'      : 'Angular 2',
+          'url'       : 'https://github.com/angular/angular',
+          'watchers'  : '469',
+          'forks'     : '760',
+        },
+        {
+          'name'      : 'Angular Material',
+          'url'       : 'https://github.com/angular/material',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Bower Material',
+          'url'       : 'https://github.com/angular/bower-material',
+          'watchers'  : '42',
+          'forks'     : '84',
+        },
+        {
+          'name'      : 'Material Start',
+          'url'       : 'https://github.com/angular/material-start',
+          'watchers'  : '81',
+          'forks'     : '303',
+        }
+      ];
+        console.log(allStates);
+
+</script>
     {% javascript 'bootstrap' %}
+        <header>
+        <div class="top-nav ">
+            <nav class="container ">
+                <div class="row">
+                    <div class="col-md-4 navbar-left ">
+                        <h3 class="lead"> Nazwa Strony
+                        </h3>
+                    </div>
+
+                    <div class="col-md-8 navbar-right ">
+                        <ul class="list-inline">
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="bottom-nav ">
+            <nav class="container ">
+                <div class="row menu">
+                    <nav class=" ">
+
+                            <div ><a href="#" class="navbar-brand" ><span>Python</span></a></div>
+                            <div><a href="#" class="navbar-brand"><span>C#</span></a></div>
+                            <div><a href="#" class="navbar-brand"><span>.Net</span></a></div>
+                            <div><a href="#" class="navbar-brand"><span>VBA</span></a></div>
+
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div>
-        <!--<div class="header">-->
-            <!--<header>-->
-                <!--<div class="top-nav ">-->
-                    <!--<nav class="container ">-->
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-4 navbar-left ">-->
-                                <!--<h3 class="lead"> Nazwa Strony-->
-                                <!--</h3>-->
-                            <!--</div>-->
 
-                            <!--<div class="col-md-8 navbar-right ">-->
-                                <!--<ul class="list-inline">-->
-                                <!--</ul>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</nav>-->
-                <!--</div>-->
-
-                <!--<div class="bottom-nav ">-->
-                    <!--<nav class="container ">-->
-                        <!--<div class="row menu">-->
-                            <!--<nav class="navbar ">-->
-                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}" /><span>Python</span></button></div>-->
-                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}"/><span>C#</span></button></div>-->
-                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}"/><span>.Net</span></button></div>-->
-                                <!--<div class="ico-picture"><button type="button"><img src="{% static 'images/Social_Media_Cloud.png' %}"/><span>VBA</span></button></div>-->
-                            <!--</nav>-->
-                        <!--</div>-->
-                    <!--</nav>-->
-                <!--</div>-->
-            <!--</header>-->
-        <!--</div>-->
         <div class="content container main-content">
+            <div ng-app="MyApp" class="autocompletedemoBasicUsage" ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak="">
+  <md-content class="md-padding">
+    <form ng-submit="$event.preventDefault()">
+      <p>Use <code>md-autocomplete</code> to search for matches from local or remote data sources.</p>
+      <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0" placeholder="What is your favorite US state?">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          No states matching "{{ctrl.searchText}}" were found.
+          <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+        </md-not-found>
+      </md-autocomplete>
+      <br>
+      <md-checkbox ng-model="ctrl.simulateQuery">Simulate query for results?</md-checkbox>
+      <md-checkbox ng-model="ctrl.noCache">Disable caching of queries?</md-checkbox>
+      <md-checkbox ng-model="ctrl.isDisabled">Disable the input?</md-checkbox>
+
+      <p>By default, <code>md-autocomplete</code> will cache results when performing a query.  After the initial call is performed, it will use the cached results to eliminate unnecessary server requests or lookup logic. This can be disabled above.</p>
+    </form>
+  </md-content>
+</div>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
             {% block content %}
-            <!--coś pomiędzy tymi blokami to wartość defoult-->
-                <!--{% for post in posts %}-->
-                    <!--<div class="post">-->
-                        <!--<div class="date">-->
-                            <!--{{ post.published_date }}-->
-                        <!--</div>-->
-                        <!--<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>-->
-                        <!--<p>{{ post.text|linebreaks }}</p>-->
-                    <!--</div>-->
-                <!--{% endfor %}-->
+
             {% endblock %}
         </div>
         <div class="container" >
@@ -69,7 +130,7 @@
 
             </footer>
         </div>
-    </div>
-
+   </div>
+<!--<script src="{% static 'js/controllers/listController.js' %}"></script>-->
 </body>
 </html>

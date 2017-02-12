@@ -28,3 +28,4 @@ def post_detail(request, pk):
     posts = get_object_or_404(Post, pk=pk)
     context = {'posts': posts}
     return render(request, 'MyApp/post_detail.html', context)
+

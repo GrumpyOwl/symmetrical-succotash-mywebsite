@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'colorful',
     'twitter_bootstrap',
     'pipeline',
-    'djangojs'
+    'djangojs',
+    'djng'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -140,7 +141,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
 )
 PIPELINE = {
     'PIPELINE_ENABLED': True,
